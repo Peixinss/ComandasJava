@@ -14,18 +14,22 @@ public class ItemConsumacao {
         return nome;
      }
 
-     public void setNome(){
+     public void setNome(String nome){
         this.nome = nome;
      }
 
+     public double getPreco(){return preco;}
+
+    public void setPreco(double preco){this.preco = preco;}
+
     public double getSubtotal(){
-        return preco + quantidade;
+        return preco * quantidade;
     }
 
     public int getQuantidade(){
         return quantidade;
     }
-    public void setQuantidade(){
+    public void setQuantidade(int quantidade){
         this.quantidade = quantidade;
     }
 }

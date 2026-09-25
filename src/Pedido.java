@@ -1,37 +1,40 @@
 public class Pedido {
     private int idPedido;
-    private Comanda[] comanda;
+    private Comanda[] comandas;
 
     public Pedido(int idPedido){
         this.idPedido = idPedido;
-        this.comanda = comanda;
+        this.comandas = new Comanda[0];
     }
 
     public int getIdPedido() {
         return idPedido;
     }
 
-    public void setIdPedido(){
+    public void setIdPedido(int idPedido){
         this.idPedido = idPedido;
     }
 
-    public Comanda[] getComanda(){
-        return comanda;
+    public Comanda[] getComandas(){
+        return comandas;
     }
 
-    public void adicionarComanda(Comanda comanda){
-        Comanda[] novoArray = new Comanda[this.comanda.length + 1];
+    public void adicionarComanda(Comanda comandas){
+        Comanda[] novoArray = new Comanda[this.comandas.length + 1];
 
-        for(int i = 0; i < this.comanda.length; i++){
-            novoArray[i] = this.comanda[i];
+        for(int i = 0; i < this.comandas.length; i++){
+            novoArray[i] = this.comandas[i];
         }
+        novoArray[this.comandas.length] = comandas;
+
+        this.comandas = novoArray;
     }
-    public calcularTotalPedido(){
-        double total = 0;
+    public double calcularTotalPedido(){
+        double totalPedido= 0;
 
-        for(int i = 0; i < comanda.length; i++){
-            total = comanda[i].getSubtotal();
+        for(int i = 0; i < comandas.length; i++){
+            totalPedido = comandas[i].calcularTotal();
         }
-        return total;
+        return totalPedido;
     }
 }

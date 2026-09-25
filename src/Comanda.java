@@ -1,46 +1,46 @@
-public class Comanda {
+    public class Comanda {
 
     private int id;
     private int numeroComanda;
     private ItemConsumacao[] itens;
 
-    public Comanda(int id, int numeroComando){
+    public Comanda(int id){
         this.id = id;
-        this.numeroComanda = numeroComando;
-        this.itens = itens;
+        this.numeroComanda = numeroComanda;
+        this.itens = new ItemConsumacao[0];
     }
 
     public int getId(){
         return id;
     }
 
-    public void setId(){
-        this.id = id;
-    }
-
     public int getNumeroComanda(){
         return numeroComanda;
     }
 
-    public void setNumeroComanda(){
-        this.numeroComanda = numeroComanda;
+    public ItemConsumacao[] getItens() {
+        return itens;
     }
 
-    public void adicionarItem(ItemConsumacao item){
+    public void adicionarItem(ItemConsumacao itens){
         ItemConsumacao[] novoArray = new ItemConsumacao[this.itens.length + 1];
 
-        for(int i = 0; i < this.itens.length; i++){
+        System.out.println(novoArray);
+
+        for (int i = 0; i < this.itens.length; i++) {
             novoArray[i] = this.itens[i];
         }
 
-        novoArray[novoArray.length - 1] = item;
+        novoArray[novoArray.length - 1] = itens;
         this.itens = novoArray;
+
     }
+
     public double calcularTotal(){
         double total = 0;
 
         for(int i = 0; i < itens.length; i++){
-            total = itens[i].getSubtotal();
+            total += itens[i].getSubtotal();
         }
         return total;
     }
